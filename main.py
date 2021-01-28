@@ -4,7 +4,8 @@ import os
 import random
 import simpleaudio.functionchecks as fc
 import sys
-if sys.platform.startswith('linux'):
+
+if sys.platform.startswith('linux'): #check which os linux/windows and clear the screen :)
 	os.system('clear')
 	path = os.path.join("/alarm-testing")
 else:
@@ -68,33 +69,9 @@ print(alarm_time)
 start = False
 
 
-
-
-# Checks if you are awake by answering "yes", with timer of 10 sec and if there isn't any input then starting again :(
-def awake_check_big():
-    awake = None
-    list_songs_check = []
-    list_songs_check = list
-
-    def awakecheck():
-        time.sleep(10)
-        
-        if awake != None:
-            print("awake")
-            start = True
-            print(start)
-            mathtest()
-        print("\n you didnt answer fast enough so im starting again haha ---__---")
-        for i in range(0, (len(list) - 1)):
-            print(songs_alone[i])
-            sound = AudioSegment.from_mp3(songs_alone[i])
-            print("\nlistening lala")
-            play(sound)
-            awake_check_big()
-
-    l = threading.Thread
-    l(target=awakecheck).start()
-    awake = input("Are you awake!?")
+from inputimeout import inputimeout, TimeoutOccurred
+import keyboard 
+test = True 
 
 def mathtest():
     list_songs_check = []
@@ -123,34 +100,47 @@ def mathtest():
                 print("Im starting again haha --__--")
                 sound = AudioSegment.from_file(random.choice(list_songs_check), format="mp3")	
                 play(sound)
+                mathtest()
 
                 
 
             if score >= 3:
                 print("Well Done ! ")
-                start = False
-                quit()
+                start = True 
+                sys.exit("You are awake so bye!") 
             count = 2
         break
         
+def big():
+	list_songs_check = []
+	list_songs_check = list
+	list_songs_big = []
+	for not_i in range(0, len(list)):
+		list_songs_big.append(random.choice(list))
+	global test, start	
+	try:
+	    something = inputimeout(prompt='Are you awake?! ', timeout=5)
+	    test = False
+	    mathtest()
+	    while True:
+	    	break
+	except TimeoutOccurred:
+	    something = 'you didnt answer fast enough so im starting again haha ---__---'    
+	print(something)
+	for i in range(0, (len(list) - 1)):
+            print([i])
+            sound = AudioSegment.from_mp3(list_songs_big[i])
+            print("\nlistening lala")
+            play(sound)
+            big()
+	
+ 
+while test is True:
+	big()
+	print("OK")
 
 
-# asking some simple question (with random numbers), and you need to answer at l
 songs_alone = []
 for num in range(0, (len(list))):
     songs_alone.append(random.choice(list))
 
-while start is False:
-    for num1 in range(0, (len(list))):
-        print(songs_alone[num1])
-        sound = AudioSegment.from_file(songs_alone[num1], format="mp3")
-        play(sound)
-        print("listening lala")
-        awake_check_big()
-
-        if (keyboard.wait('q') == None):
-            mathtest()
-        else:
-            print("hi!")
-            sound = AudioSegment.from_file(songs_alone[num1], format="mp3")
-            play(sound)
