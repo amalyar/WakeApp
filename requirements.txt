@@ -1,0 +1,11 @@
+tkinter
+datetime
+keyboard
+time
+threading
+inputtimeout
+pydub
+os
+random
+simpleaudio
+sys
