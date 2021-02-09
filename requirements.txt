@@ -2,7 +2,7 @@ tkinter
 datetime
 keyboard
 time
-threading
+ffmpeg-python
 inputtimeout
 pydub
 os
