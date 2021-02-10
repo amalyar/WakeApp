@@ -5,7 +5,7 @@ import random
 import simpleaudio.functionchecks as fc
 import sys
 
-if sys.platform.startswith('linux'): #check which os linux/windows and clear the screen :)
+if sys.platform.startswith('linux'):  #check which os linux/windows and clear the screen :)
 	os.system('clear')
 	path = os.path.join("/alarm-testing")
 else:
@@ -143,4 +143,3 @@ while test is True:
 songs_alone = []
 for num in range(0, (len(list))):
     songs_alone.append(random.choice(list))
-
