@@ -1,11 +1,6 @@
-tkinter
-datetime
-keyboard
-time
-ffmpeg-python
-inputtimeout
-pydub
-os
-random
-simpleaudio
-sys
+datetime == 4.3
+keyboard == 0.13.5
+ffmpeg-python == 0.2.0
+inputimeout == 1.0.4
+pydub == 0.24.1
+simpleaudio == 1.0.4
