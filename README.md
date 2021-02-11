@@ -6,9 +6,9 @@
 ### Windows:
 * git clone https://github.com/amalyar/alarm-clock.git
 * cd alarm-clock
-* python3 ffmpeg-install.py (You must run it as admin).
+* python ffmpeg-install.py (You must run it as admin).
 * pip3 install -r requirements.txt 
-* python3 main.py 
+* python main.py 
 
 ### Linux (Ubuntu/Debian, kali):
 * git clone https://github.com/amalyar/alarm-clock.git 
